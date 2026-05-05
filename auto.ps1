@@ -1,0 +1,1 @@
+while($true){if(git status --porcelain){git add .;git commit -m "auto";git push}sleep 10}
