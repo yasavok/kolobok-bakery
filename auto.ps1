@@ -1,1 +1,14 @@
-﻿$w=New-Object System.IO.FileSystemWatcher; $w.Path="C:\Users\sarem\Desktop\Smirnov\MDK 05.02\Praktiki\HTML CSS\PZ 01\repo"; $w.IncludeSubdirectories=$true; $w.EnableRaisingEvents=$true; $last=@{}; $a={$path=$Event.SourceEventArgs.FullPath; $now=(Get-Date).Ticks; if(-not $last.ContainsKey($path) -or ($now - $last[$path]) -gt 5000000){$last[$path]=$now; Start-Sleep -Milliseconds 500; cd "C:\Users\sarem\Desktop\Smirnov\MDK 05.02\Praktiki\HTML CSS\PZ 01\repo"; git add .; git commit -m "Auto: $(Get-Date -Format HH:mm:ss)"; git push; Write-Host "Pushed at $(Get-Date -Format HH:mm:ss)" -ForegroundColor Green}}; Register-ObjectEvent $w "Changed" -Action $a; Write-Host "Instant push ON... Press Ctrl+C to stop" -ForegroundColor Yellow; while($true){Start-Sleep 1}
+﻿$watcher = New-Object System.IO.FileSystemWatcher
+$watcher.Path = "C:\Users\sarem\Desktop\Smirnov\MDK 05.02\Praktiki\HTML CSS\PZ 01\repo"
+$watcher.IncludeSubdirectories = $true
+$watcher.EnableRaisingEvents = $true
+$action = {
+    Set-Location "C:\Users\sarem\Desktop\Smirnov\MDK 05.02\Praktiki\HTML CSS\PZ 01\repo"
+    git add .
+    git commit -m "Auto: $(Get-Date -Format HH:mm:ss)"
+    git push
+    Write-Host "Pushed at $(Get-Date -Format HH:mm:ss)" -ForegroundColor Green
+}
+Register-ObjectEvent $watcher "Changed" -Action $action
+Write-Host "Watching... Press Ctrl+C to stop" -ForegroundColor Yellow
+while ($true) { Start-Sleep -Seconds 1 }
