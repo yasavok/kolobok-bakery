@@ -4,172 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пекарня "Колобок"</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
 
-<header>
+<header id="top">
+    <img class="logo" src="img/logo.png" alt="Логотип пекарни Колобок" width="80" height="80" loading="lazy">
     <h1>Пекарня "Колобок"</h1>
     <nav aria-label="Основное меню">
         <ul>
             <li><a href="#about">О нас</a></li>
-            <li><a href="#menu">Наше меню</a></li>
+            <li class="has-submenu">
+                <input type="checkbox" id="submenuToggle" class="submenu-trigger">
+                <label for="submenuToggle" class="submenu-label">Наше меню</label>
+                <ul class="submenu">
+                    <li><a href="#bread">Хлебная корзина</a></li>
+                    <li><a href="#pastry">Сдобная выпечка</a></li>
+                    <li><a href="#desserts">Сладкое настроение</a></li>
+                    <li><a href="#drinks">Напитки</a></li>
+                </ul>
+            </li>
+            <li><a href="#prices">Наши цены</a></li>
+            <li><a href="#gallery">Наша выпечка</a></li>
             <li><a href="#contacts">Контакты</a></li>
+            <li><a href="form.html">Заказать</a></li>
         </ul>
     </nav>
 </header>
 
-<main id="home">
+<main>
     <section id="about">
         <h2>О нас</h2>
+        <p>Домашняя выпечка с 2010 года!</p>
         <p><strong>Пекарня "Колобок"</strong> — это место, где традиции встречаются с качеством, а каждый продукт создаётся с любовью и заботой.</p>
-
-        <article>
-            <h3>Наша история</h3>
-            <p>Основанная в 2010 году, наша пекарня начинала с небольшой семейной кухни, где мы пекли хлеб по старинным рецептам. Сегодня "Колобок" — это современное производство, сохранившее дух домашней выпечки. Мы по-прежнему используем только натуральные ингредиенты, без искусственных добавок и консервантов.</p>
-        </article>
-
-        <article>
-            <h3>Наши принципы</h3>
-            <ul>
-                <li>Качество — мука от проверенных поставщиков, свежие фермерские продукты</li>
-                <li>Традиции — рецепты, передаваемые из поколения в поколение</li>
-                <li>Инновации — сочетание классики и новых технологий выпечки</li>
-                <li>Экологичность — биоразлагаемая упаковка и ответственное производство</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>Ассортимент</h3>
-            <p>Ежедневно мы готовим для вас:</p>
-            <ul>
-                <li>Свежий хлеб на закваске и дрожжевой</li>
-                <li>Сдобную выпечку по домашним рецептам</li>
-                <li>Десерты — от классических круассанов до авторских пирожных</li>
-                <li>Сезонные новинки — только вдохновленные природой вкусы</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>Наша команда</h3>
-            <p>За каждой буханкой хлеба и сладким шедевром стоит труд наших мастеров-пекарей и кондитеров. Мы искренне верим, что хорошая выпечка может сделать день ярче!</p>
-            <p>Приходите в "Колобок" — где каждый каравай рассказывает свою вкусную историю!</p>
-        </article>
-        <div class="quote">
-            "От души — к душе через хлеб" <br> Ваша пекарня "Колобок"
-        </div>
+        <div class="quote">"От души — к душе через хлеб" <br> Ваша пекарня "Колобок"</div>
     </section>
 
     <section id="menu">
         <h2>Наше меню</h2>
-        <p>В пекарне "Колобок" мы печём с душой! Вся наша выпечка готовится ежедневно с 4 утра по старинным рецептам из натуральных ингредиентов.</p>
+        <p>Вся выпечка готовится ежедневно с 4 утра по старинным рецептам из натуральных ингредиентов.</p>
 
-        <article>
-            <h3>Хлебная корзина</h3>
-            <ul>
-                <li>Бородинский (500 г) — на ржаной закваске с солодом и тмином</li>
-                <li>Деревенский (650 г) — пшенично-ржаной на живых дрожжах</li>
-                <li>Чиабатта (400 г) — итальянский хлеб с хрустящей корочкой</li>
-                <li>Безглютеновый (350 г) — из гречневой и кукурузной муки</li>
-            </ul>
-        </article>
+        <div class="table-wrapper table-responsive">
+            <table class="menu-table">
+                <caption>Меню пекарни "Колобок"</caption>
+                <tbody>
+                    <tr id="bread" class="menu-table__category">
+                        <th colspan="3">Хлебная корзина</th>
+                    </tr>
+                    <tr class="menu-table__cols">
+                        <th>Название</th><th>Вес</th><th>Описание</th>
+                    </tr>
+                    <tr><td data-label="Название">Бородинский</td><td data-label="Вес">500 г</td><td data-label="Описание">На ржаной закваске с солодом и тмином</td></tr>
+                    <tr><td data-label="Название">Деревенский</td><td data-label="Вес">650 г</td><td data-label="Описание">Пшенично-ржаной на живых дрожжах</td></tr>
+                    <tr><td data-label="Название">Чиабатта</td><td data-label="Вес">400 г</td><td data-label="Описание">Итальянский хлеб с хрустящей корочкой</td></tr>
+                    <tr><td data-label="Название">Безглютеновый</td><td data-label="Вес">350 г</td><td data-label="Описание">Из гречневой и кукурузной муки</td></tr>
 
-        <article>
-            <h3>Сдобная выпечка</h3>
-            <ul>
-                <li>Круассан классический — слоёное тесто на французском масле</li>
-                <li>Пирожки с вишней/картошкой/капустой (150 г)</li>
-                <li>Булочки "Обнимашки" с корицей или шоколадом</li>
-                <li>Багет французский с хрустящей корочкой</li>
-            </ul>
-        </article>
+                    <tr id="pastry" class="menu-table__category">
+                        <th colspan="3">Сдобная выпечка</th>
+                    </tr>
+                    <tr class="menu-table__cols">
+                        <th>Название</th><th>Вес</th><th>Описание</th>
+                    </tr>
+                    <tr><td data-label="Название">Круассан классический</td><td data-label="Вес">80 г</td><td data-label="Описание">Слоёное тесто на французском масле</td></tr>
+                    <tr><td data-label="Название">Пирожки</td><td data-label="Вес">150 г</td><td data-label="Описание">С вишней, картошкой или капустой</td></tr>
+                    <tr><td data-label="Название">Булочки "Обнимашки"</td><td data-label="Вес">100 г</td><td data-label="Описание">С корицей или шоколадом</td></tr>
+                    <tr><td data-label="Название">Багет французский</td><td data-label="Вес">250 г</td><td data-label="Описание">С хрустящей корочкой</td></tr>
 
-        <article>
-            <h3>Сладкое настроение</h3>
-            <ul>
-                <li>Тирамису — классический итальянский десерт</li>
-                <li>Эклеры с заварным кремом</li>
-                <li>Медовик по бабушкиному рецепту</li>
-                <li>Пирожные "Картошка" с грецкими орехами</li>
-            </ul>
-        </article>
+                    <tr id="desserts" class="menu-table__category">
+                        <th colspan="3">Сладкое настроение</th>
+                    </tr>
+                    <tr class="menu-table__cols">
+                        <th>Название</th><th>Вес</th><th>Описание</th>
+                    </tr>
+                    <tr><td data-label="Название">Тирамису</td><td data-label="Вес">120 г</td><td data-label="Описание">Классический итальянский десерт</td></tr>
+                    <tr><td data-label="Название">Эклеры</td><td data-label="Вес">100 г</td><td data-label="Описание">С заварным кремом</td></tr>
+                    <tr><td data-label="Название">Медовик</td><td data-label="Вес">150 г</td><td data-label="Описание">По бабушкиному рецепту</td></tr>
+                    <tr><td data-label="Название">Пирожные "Картошка"</td><td data-label="Вес">90 г</td><td data-label="Описание">С грецкими орехами</td></tr>
 
-        <article>
-            <h3>Напитки</h3>
-            <ul>
-                <li>Свежесваренный кофе из зерен собственной обжарки</li>
-                <li>Домашний квас и морсы</li>
-                <li>Травяные чаи с мёдом</li>
-            </ul>
-        </article>
+                    <tr id="drinks" class="menu-table__category">
+                        <th colspan="3">Напитки</th>
+                    </tr>
+                    <tr class="menu-table__cols">
+                        <th>Название</th><th colspan="2">Описание</th>
+                    </tr>
+                    <tr><td data-label="Название">Кофе</td><td colspan="2" data-label="Описание">Свежесваренный кофе из зерен собственной обжарки</td></tr>
+                    <tr><td data-label="Название">Квас и морсы</td><td colspan="2" data-label="Описание">Домашний квас и клюквенный морс</td></tr>
+                    <tr><td data-label="Название">Травяные чаи</td><td colspan="2" data-label="Описание">Травяные чаи с мёдом</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-        <div class="quote">
-            <p>Всегда в наличии: Бездрожжевой хлеб, Веганская выпечка, Продукты без сахара</p>
-            <p>Цены указаны за штуку/упаковку. Ассортимент может меняться в зависимости от сезона.</p>
-            <p>Приходите за вкусом и теплом! <br> Ваша пекарня "Колобок"</p>
-            <p>P.S. Каждое утро с 7:00 до 9:00 — скидка 20% на всю выпечку!</p>
+    <section id="prices">
+        <h2>Наши цены</h2>
+        <div class="table-wrapper table-responsive">
+            <table class="price-table">
+                <caption>Актуальные цены на основную продукцию</caption>
+                <thead>
+                    <tr><th>Наименование</th><th>Цена</th><th>Вес</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Наименование">Хлеб ржаной</td><td data-label="Цена">120 ₽</td><td data-label="Вес">500 г</td></tr>
+                    <tr><td data-label="Наименование">Бородинский</td><td data-label="Цена">95 ₽</td><td data-label="Вес">500 г</td></tr>
+                    <tr><td data-label="Наименование">Деревенский</td><td data-label="Цена">110 ₽</td><td data-label="Вес">650 г</td></tr>
+                    <tr><td data-label="Наименование">Чиабатта</td><td data-label="Цена">85 ₽</td><td data-label="Вес">400 г</td></tr>
+                    <tr><td data-label="Наименование">Круассан</td><td data-label="Цена">120 ₽</td><td data-label="Вес">80 г</td></tr>
+                    <tr><td data-label="Наименование">Пирожок</td><td data-label="Цена">55 ₽</td><td data-label="Вес">150 г</td></tr>
+                    <tr><td data-label="Наименование">Тирамису</td><td data-label="Цена">220 ₽</td><td data-label="Вес">120 г</td></tr>
+                    <tr><td data-label="Наименование">Кофе черный</td><td data-label="Цена">150 ₽</td><td data-label="Вес">200 мл</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <h2>Наша выпечка</h2>
+        <div class="products-grid">
+            <article class="product-card">
+                <figure><img src="img/baget-small.jpg" alt="Багет французский" width="300" height="200" loading="lazy"></figure>
+                <div class="product-info">
+                    <p class="product-description">Багет французский с хрустящей корочкой. Вес: 250 г.</p>
+                    <footer class="product-footer"><span class="price">75 ₽</span><button class="buy-btn" type="button">В корзину</button></footer>
+                </div>
+            </article>
+            <article class="product-card">
+                <figure><img src="img/baton-small.jpg" alt="Батон" width="300" height="200" loading="lazy"></figure>
+                <p class="product-description">Свежий батон на дрожжах. Вес: 400 г.</p>
+                <footer class="product-footer"><span class="price">85 ₽</span><button class="buy-btn" type="button">В корзину</button></footer>
+            </article>
+            <article class="product-card">
+                <figure><img src="img/kalach-small.jpg" alt="Калач" width="300" height="200" loading="lazy"></figure>
+                <p class="product-description">Традиционный калач с золотистой корочкой.</p>
+                <footer class="product-footer"><span class="price">90 ₽</span><button class="buy-btn" type="button">В корзину</button></footer>
+            </article>
+            <article class="product-card">
+                <figure><img src="img/pshenichniy-small.jpg" alt="Пшеничный хлеб" width="300" height="200" loading="lazy"></figure>
+                <p class="product-description">Мягкий пшеничный хлеб. Вес: 500 г.</p>
+                <footer class="product-footer"><span class="price">110 ₽</span><button class="buy-btn" type="button">В корзину</button></footer>
+            </article>
+            <article class="product-card">
+                <figure><img src="img/rjanoy-small.jpg" alt="Ржаной хлеб" width="300" height="200" loading="lazy"></figure>
+                <p class="product-description">Ржаной хлеб на закваске. Вес: 500 г.</p>
+                <footer class="product-footer"><span class="price">120 ₽</span><button class="buy-btn" type="button">В корзину</button></footer>
+            </article>
         </div>
     </section>
 
     <section id="contacts">
-        <h2>Контакты пекарни "Колобок"</h2>
-
-        <article>
-            <h3>Где нас найти:</h3>
-            <address>
-                Адрес: г. Москва, ул. Пряничная, д. 15 (5 минут от м. Сладковская)<br>
-                Филиал: ТЦ "Золотой каравай", 3 этаж (ул. Мукомольная, 42)
-            </address>
-        </article>
-
-        <article>
-            <h3>Часы работы:</h3>
-            <p>Пн-Пт: 7:00–21:00 <br> Сб-Вс: 8:00–22:00 <br> Без выходных и перерывов</p>
-        </article>
-
-        <article>
-            <h3>Свяжитесь с нами:</h3>
-            <p>Телефон: +7 (495) 123-45-67<br>
-            Email: <a href="mailto:kolobok@bakery.ru">kolobok@bakery.ru</a><br>
-            Соцсети: @kolobok_bakery (ВК, Telegram, Instagram)</p>
-        </article>
-
-        <article>
-            <h3>Служба доставки:</h3>
-            <p>Доставка: с 9:00 до 20:00 (в пределах МКАД — бесплатно от 1000 ₽)<br>
-            Сроки выпечки под заказ: 1–2 дня<br>
-            Торты на заказ: минимальный заказ — 3 кг</p>
-        </article>
-
-        <article>
-            <h3>Реквизиты:</h3>
-            <p>ООО "Колобок" <br> ИНН 1234567890 <br> ОГРН 1234567890123</p>
-        </article>
-
-        <article>
-            <h3>Как добраться:</h3>
-            <p>Наш фирменный фургон с изображением Колобка припаркован у входа. От метро: автобусы 12, 45 до остановки "Пекарный ряд".</p>
-        </article>
-
-        <div class="quote">
-            Ждём вас за ароматным хлебом и душевными беседами! <br> 
-            Ваш "Колобок" — где каждый кусочек с любовью!
-        </div>
+        <h2>Контакты</h2>
+        <dl class="contacts-dl">
+            <dt>Где нас найти</dt>
+            <dd>г. Москва, ул. Пряничная, д. 15 (5 минут от м. Сладковская)</dd>
+            <dt>Часы работы</dt>
+            <dd>Пн-Пт: 7:00–21:00<br>Сб-Вс: 8:00–22:00</dd>
+            <dt>Телефон</dt>
+            <dd>+7 (495) 123-45-67</dd>
+            <dt>Email</dt>
+            <dd><a href="mailto:kolobok@bakery.ru">kolobok@bakery.ru</a></dd>
+        </dl>
+        <div class="quote">Ждём вас за ароматным хлебом и душевными беседами! <br> Ваш "Колобок"</div>
     </section>
 </main>
 
 <footer>
     <div class="social-links">
-        <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a> |
-        <a href="#" target="_blank" rel="noopener noreferrer">ВКонтакте</a> |
-        <a href="#" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="#" target="_blank">Instagram</a> |
+        <a href="#" target="_blank">ВКонтакте</a> |
+        <a href="#" target="_blank">Telegram</a>
     </div>
-    <p>© 2024 Пекарня "Колобок"</p>
-    <div class="footer-up">
-        <a href="#home">Наверх наверное</a>
-    </div>
+    <p>© 2025 Пекарня "Колобок"</p>
+    <div class="footer-up"><a href="#top">Наверх</a></div>
 </footer>
 
+<a href="#top" class="back-to-top">Наверх</a>
+
+<script>
+    var btns = document.querySelectorAll('.buy-btn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function() {
+            alert('Товар добавлен в корзину! Оформите заказ на странице "Заказать".');
+        });
+    }
+    
+    var submenuLinks = document.querySelectorAll('.submenu a');
+    var checkbox = document.getElementById('submenuToggle');
+    if (checkbox) {
+        for (var i = 0; i < submenuLinks.length; i++) {
+            submenuLinks[i].addEventListener('click', function() {
+                checkbox.checked = false;
+            });
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма заказа - Пекарня "Колобок"</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="top">
+    <img class="logo" src="img/logo.png" alt="Логотип пекарни Колобок" width="80" height="80" loading="lazy">
+    <h1>Пекарня "Колобок"</h1>
+    <nav aria-label="Основное меню">
+        <ul>
+            <li><a href="index.html#about">О нас</a></li>
+            <li class="has-submenu">
+                <input type="checkbox" id="submenuToggleForm" class="submenu-trigger">
+                <label for="submenuToggleForm" class="submenu-label">Наше меню</label>
+                <ul class="submenu">
+                    <li><a href="index.html#bread">Хлебная корзина</a></li>
+                    <li><a href="index.html#pastry">Сдобная выпечка</a></li>
+                    <li><a href="index.html#desserts">Сладкое настроение</a></li>
+                    <li><a href="index.html#drinks">Напитки</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#prices">Наши цены</a></li>
+            <li><a href="index.html#gallery">Наша выпечка</a></li>
+            <li><a href="index.html#contacts">Контакты</a></li>
+            <li><a href="form.html">Заказать</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="order">
+        <form id="orderForm">
+            <h2>Форма заказа</h2>
+            <p>Оформите заказ на свежую выпечку</p>
+            
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 000-00-00">
+            </div>
+            
+            <div class="form-group">
+                <label for="productType">Тип продукции:</label>
+                <select id="productType" name="productType" required>
+                    <option value="">Выберите тип</option>
+                    <option value="bread">Хлеб</option>
+                    <option value="pastry">Выпечка</option>
+                    <option value="dessert">Десерт</option>
+                    <option value="drink">Напиток</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="specificProduct">Конкретный товар:</label>
+                <select id="specificProduct" name="specificProduct" required>
+                    <option value="">Сначала выберите тип продукции</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity">Количество:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="deliveryDate">Дата доставки:</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="deliveryTime">Время доставки:</label>
+                <input type="time" id="deliveryTime" name="deliveryTime" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="comment">Комментарий:</label>
+                <textarea id="comment" name="comment" rows="3" placeholder="Особые пожелания..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="promoCode">Промокод:</label>
+                <input type="text" id="promoCode" name="promoCode" placeholder="Введите промокод">
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="consent" name="consent" required>
+                    Я согласен на обработку персональных данных
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="submit">Оформить заказ</button>
+                <button type="reset">Очистить форму</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <div class="social-links">
+        <a href="#" target="_blank">Instagram</a> |
+        <a href="#" target="_blank">ВКонтакте</a> |
+        <a href="#" target="_blank">Telegram</a>
+    </div>
+    <p>© 2025 Пекарня "Колобок"</p>
+    <div class="footer-up"><a href="#top">Наверх</a></div>
+</footer>
+
+<script>
+    var productTypeSelect = document.getElementById('productType');
+    var specificProductSelect = document.getElementById('specificProduct');
+    
+    var products = {
+        bread: ['Бородинский', 'Деревенский', 'Чиабатта', 'Безглютеновый', 'Багет'],
+        pastry: ['Круассан', 'Пирожки', 'Булочки Обнимашки', 'Сникерс-бун', 'Картошка сладкая'],
+        dessert: ['Тирамису', 'Эклеры', 'Медовик', 'Пирожные Картошка', 'Чизкейк'],
+        drink: ['Кофе', 'Квас', 'Морс', 'Травяной чай', 'Какао']
+    };
+    
+    if (productTypeSelect) {
+        productTypeSelect.addEventListener('change', function() {
+            var type = this.value;
+            specificProductSelect.innerHTML = '<option value="">Выберите товар</option>';
+            if (products[type]) {
+                for (var i = 0; i < products[type].length; i++) {
+                    var option = document.createElement('option');
+                    option.value = products[type][i];
+                    option.textContent = products[type][i];
+                    specificProductSelect.appendChild(option);
+                }
+            }
+        });
+    }
+    
+    var form = document.getElementById('orderForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var consent = document.getElementById('consent');
+            if (!consent.checked) {
+                alert('Пожалуйста, согласитесь на обработку персональных данных.');
+                return;
+            }
+            alert('Заказ оформлен! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+            specificProductSelect.innerHTML = '<option value="">Сначала выберите тип продукции</option>';
+        });
+    }
+    
+    var dateInput = document.getElementById('deliveryDate');
+    if (dateInput) {
+        var today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+    }
+    
+    var submenuLinks = document.querySelectorAll('.submenu a');
+    var menuCheckbox = document.getElementById('submenuToggleForm');
+    if (menuCheckbox) {
+        for (var i = 0; i < submenuLinks.length; i++) {
+            submenuLinks[i].addEventListener('click', function() {
+                menuCheckbox.checked = false;
+            });
+        }
+    }
+</script>
+</body>
+</html>
